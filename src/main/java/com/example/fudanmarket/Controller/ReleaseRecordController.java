@@ -28,9 +28,6 @@ public class ReleaseRecordController {
         User user = userService.findByUserName(username);
         return goodsService.releaseRecordByUserId(user.getId());
     }
-//    public Page<Goods> getUserReleaseRecord(@RequestHeader("Authorization") String token,@RequestParam("page") Integer page, @RequestParam("size") Integer size) {
-//        return goodsService.releaseRecord(userService.parseToken(token).getId(), PageRequest.of(page, size));
-//    }
 
     @PostMapping("updateGoodsInfo")
     @ResponseBody

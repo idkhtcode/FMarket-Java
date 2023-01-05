@@ -160,6 +160,10 @@ public class GoodsService {
     public Page<Goods> findByGoodsType(String goodTypes, Pageable pageable) {
         return goodsRepository.findByGoodsTypeContaining(goodTypes, pageable);
     }
+    public List<Goods> findByGoodsType(String goodTypes) {
+        return goodsRepository.findByGoodsTypeContaining(goodTypes);
+    }
+
 
     public void buyGoods(int sid, int bid, int gid) {
     }

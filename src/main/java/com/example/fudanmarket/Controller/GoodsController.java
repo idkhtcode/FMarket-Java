@@ -163,12 +163,15 @@ public class GoodsController {
     //搜索
     @PostMapping("/search")
     @ResponseBody
-    public Page<Goods> search(@RequestParam("name") String name, @RequestParam("searchType") String searchType, @RequestParam("page") Integer page, @RequestParam("size") Integer size) {
-        if (searchType.equals("类别/名字")) {
-            return goodsService.findByNameContainingOrGoodsTypeContaining(name, name, PageRequest.of(page, size));
-        }
-        return goodsService.findByGoodsType(name, PageRequest.of(page, size));
+    public List<Goods> search(@RequestParam("name") String name, @RequestParam("searchType") String searchType) {
+        return goodsService.findByName(name);
     }
+//    public Page<Goods> search(@RequestParam("name") String name, @RequestParam("searchType") String searchType, @RequestParam("page") Integer page, @RequestParam("size") Integer size) {
+//        if (searchType.equals("类别/名字")) {
+//            return goodsService.findByNameContainingOrGoodsTypeContaining(name, name, PageRequest.of(page, size));
+//        }
+//        return goodsService.findByGoodsType(name, PageRequest.of(page, size));
+//    }
 
     @PostMapping("/getBuyingGoods")
     @ResponseBody
