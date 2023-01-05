@@ -49,9 +49,9 @@ public class UserController {
 
     @PostMapping("/getUser")
     @ResponseBody
-    public User getUser(@RequestHeader("Authorization") String token) {
-        User user = userService.parseToken(token);
-        user.setPassword(null);
+    public User getUser(@RequestParam(value = "username") String username) {
+        log.info("call get user");
+        User user = userService.findByUserName(username);
         return user;
     }
 

@@ -195,13 +195,21 @@ public class GoodsController {
 
     @PostMapping("/bookRecommend")
     @ResponseBody
-    public Page<Goods> bookRecommend(
-            @RequestHeader("Authorization") String token,
-            @RequestParam("page") Integer page,
-            @RequestParam("size") Integer size) {
-        User user = userService.parseToken(token);
+    public List<Goods> bookRecommend(
+            @RequestParam(value = "username")String username) {
+        User user = userService.findByUserName(username);
         String semester = goodsService.year2semester(user.getYear());
         String searchName = user.getMajor();
-        return goodsService.findGoodsAndSemesterByMajor(semester, searchName, PageRequest.of(page, size));
+        return goodsService.findGoodsAndSemesterByMajor(semester, searchName);
     }
 }
+//    public Page<Goods> bookRecommend(
+//            @RequestHeader("Authorization") String token,
+//            @RequestParam("page") Integer page,
+//            @RequestParam("size") Integer size) {
+//        User user = userService.parseToken(token);
+//        String semester = goodsService.year2semester(user.getYear());
+//        String searchName = user.getMajor();
+//        return goodsService.findGoodsAndSemesterByMajor(semester, searchName, PageRequest.of(page, size));
+//    }
+
