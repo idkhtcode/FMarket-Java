@@ -37,6 +37,8 @@ public interface GoodsRepository extends JpaRepository<Goods, Integer> {
 
     List<Goods> findByGoodsTypeContainingAndSemesterContainingOrderBySemesterAsc(String major, String semester);
     Page<Goods> findByGoodsTypeContainingAndSemesterEquals(String major, String semester,Pageable pageable);
+
+    List<Goods> findByGoodsTypeContainingAndSemesterEquals(String major, String semester);
     Page<Goods> findByGoodsTypeContaining(String type, Pageable pageable);
 
 }

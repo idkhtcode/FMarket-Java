@@ -165,12 +165,16 @@ public class GoodsService {
     }
 
     //年级专业
-    public List<Goods> findGoodsAndSemesterByMajor(String semester, String searchName) {
+    public List<Goods> findGoodsAndSemesterByMajorList(String semester, String searchName) {
         return goodsRepository.findByGoodsTypeContainingAndSemesterContainingOrderBySemesterAsc(searchName, semester);
     }
 
     public Page<Goods> findGoodsAndSemesterByMajor(String semester, String searchName, Pageable pageable) {
         return goodsRepository.findByGoodsTypeContainingAndSemesterEquals(searchName, semester, pageable);
+    }
+
+    public List<Goods> findGoodsAndSemesterByMajorList2(String semester, String searchName) {
+        return goodsRepository.findByGoodsTypeContainingAndSemesterEquals(searchName, semester);
     }
 
     public String year2semester(String year) {

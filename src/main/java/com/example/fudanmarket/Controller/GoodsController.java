@@ -195,12 +195,15 @@ public class GoodsController {
 
     @PostMapping("/bookRecommend")
     @ResponseBody
-    public List<Goods> bookRecommend(
-            @RequestParam(value = "username")String username) {
+    public List<Goods> bookRecommend(@RequestParam(value = "username") String username) {
+        log.info("call book recommend");
+        System.out.println("username = " + username);
         User user = userService.findByUserName(username);
         String semester = goodsService.year2semester(user.getYear());
+        System.out.println("semester = " + semester);
         String searchName = user.getMajor();
-        return goodsService.findGoodsAndSemesterByMajor(semester, searchName);
+        System.out.println("searchName = " + searchName);
+        return goodsService.findGoodsAndSemesterByMajorList(semester, searchName);
     }
 }
 //    public Page<Goods> bookRecommend(
