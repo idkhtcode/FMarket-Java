@@ -133,9 +133,6 @@ public class GoodsService {
         return goodsRepository.queryById(gid);
     }
 
-    public List<Goods> findByName(String name) {
-        return goodsRepository.findByNameContaining(name);
-    }
 
     public List<Goods> findByType(String type) {
         return goodsRepository.findByGoodsTypeContaining(type);
@@ -145,7 +142,7 @@ public class GoodsService {
         return goodsRepository.findByGoodsTypeContaining(type);
     }
 
-    public List<Goods> findByNameAndType(String name) {
+    public List<Goods> findByNameAndType(String name,String type) {
         return goodsRepository.findByNameContainingOrGoodsTypeContaining(name, name);
     }
 

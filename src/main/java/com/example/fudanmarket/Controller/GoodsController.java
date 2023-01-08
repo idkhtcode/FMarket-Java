@@ -163,8 +163,9 @@ public class GoodsController {
     //搜索
     @PostMapping("/search")
     @ResponseBody
-    public List<Goods> search(@RequestParam("name") String name, @RequestParam("searchType") String searchType) {
-        return goodsService.findByName(name);
+    public List<Goods> search(@RequestParam("name") String name) {
+        log.info("call seach");
+        return goodsService.findByNameAndType(name,name);
     }
 //    public Page<Goods> search(@RequestParam("name") String name, @RequestParam("searchType") String searchType, @RequestParam("page") Integer page, @RequestParam("size") Integer size) {
 //        if (searchType.equals("类别/名字")) {
